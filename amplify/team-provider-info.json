@@ -10,6 +10,11 @@
       "StackName": "amplify-myfirstquasaramplify-devv-181012",
       "StackId": "arn:aws:cloudformation:eu-central-1:616991809639:stack/amplify-myfirstquasaramplify-devv-181012/061109d0-8295-11eb-971e-02665a1fbcc8",
       "AmplifyAppId": "d2pl47efzws5z9"
+    },
+    "categories": {
+      "auth": {
+        "myfirstquasaramplifyb2956c4b": {}
+      }
     }
   }
 }

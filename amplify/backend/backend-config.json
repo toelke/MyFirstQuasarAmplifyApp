@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "myfirstquasaramplifyb2956c4b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
