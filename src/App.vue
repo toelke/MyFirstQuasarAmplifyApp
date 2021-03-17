@@ -4,7 +4,11 @@
   </div>
 </template>
 <script>
+import { configCloud } from "src/services/cloud";
 export default {
-  name: 'App'
-}
+  name: "App",
+  mounted() {
+    configCloud();
+  },
+};
 </script>
