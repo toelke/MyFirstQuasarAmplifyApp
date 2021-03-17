@@ -6,3 +6,13 @@ export const configCloud = () => {
   Amplify.configure(awsconfig);
   Auth.configure(awsconfig);
 };
+
+export const auth_logout = async () => {
+  try {
+    await Auth.signOut();
+    const result = await Auth.currentUserInfo();
+    return { status: 'ok', payload: {} };
+  } catch (error) {
+    return { status: 'error', payload: {} };
+  }
+};

@@ -14,6 +14,10 @@
         <q-toolbar-title>
           Photo App
         </q-toolbar-title>
+        <div class="absolute-right" v-if="loggedIn">
+          {{ this.user }}
+          <q-btn @click="logout()" flat label="LogOut" class="right" />
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -25,7 +29,12 @@
     >
     </q-drawer>
 
-    <amplify-authenticator v-if="!loggedIn" username-alias="email" hideDefault="{true}"> </amplify-authenticator>
+    <amplify-authenticator
+      v-if="!loggedIn"
+      username-alias="email"
+      hideDefault="{true}"
+    >
+    </amplify-authenticator>
 
     <q-page-container>
       <router-view />
@@ -34,8 +43,9 @@
 </template>
 
 <script>
+import { auth_logout } from "src/services/cloud";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import '@aws-amplify/ui-vue';
+import "@aws-amplify/ui-vue";
 
 export default {
   name: "MainLayout",
@@ -57,6 +67,14 @@ export default {
         this.user = "";
       }
     });
+  },
+  methods: {
+    async logout() {
+      const stat = await auth_logout();
+      if (stat.status == "ok") {
+        this.loggedIn = false;
+      }
+    },
   },
 };
 </script>
