@@ -25,6 +25,8 @@
     >
     </q-drawer>
 
+    <amplify-authenticator v-if="!loggedIn" username-alias="email" hideDefault="{true}"> </amplify-authenticator>
+
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -32,13 +34,29 @@
 </template>
 
 <script>
+import { onAuthUIStateChange } from "@aws-amplify/ui-components";
+import '@aws-amplify/ui-vue';
+
 export default {
-  name: 'MainLayout',
-  components: { },
-  data () {
+  name: "MainLayout",
+  components: {},
+  data() {
     return {
       leftDrawerOpen: false,
-    }
-  }
-}
+      loggedIn: false,
+      user: "",
+    };
+  },
+  created() {
+    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
+      if (authState == "signedin") {
+        this.loggedIn = true;
+        this.user = authData.username;
+      } else {
+        this.loggedIn = false;
+        this.user = "";
+      }
+    });
+  },
+};
 </script>
