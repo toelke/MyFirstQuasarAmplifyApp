@@ -70,6 +70,9 @@ export default {
       }
     });
   },
+  beforeDestroy() {
+    this.unsubscribeAuth();
+  },
   methods: {
     async logout() {
       const stat = await auth_logout();
