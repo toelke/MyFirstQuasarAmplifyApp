@@ -29,11 +29,12 @@
     >
     </q-drawer>
 
-    <amplify-authenticator
-      v-if="!loggedIn"
-      username-alias="email"
-      hideDefault="{true}"
-    >
+    <amplify-authenticator v-if="!loggedIn" username-alias="email">
+      <amplify-sign-up
+        slot="sign-up"
+        username-alias="email"
+        :form-fields.prop="formFields"
+      ></amplify-sign-up>
     </amplify-authenticator>
 
     <q-page-container>
@@ -55,6 +56,7 @@ export default {
       leftDrawerOpen: false,
       loggedIn: false,
       user: "",
+      formFields: [{ type: "email" }, { type: "password" }],
     };
   },
   created() {
