@@ -37,7 +37,7 @@
       ></amplify-sign-up>
     </amplify-authenticator>
 
-    <q-page-container>
+    <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
   </q-layout>
