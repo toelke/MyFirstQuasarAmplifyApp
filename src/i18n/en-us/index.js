@@ -1,7 +1,10 @@
-// This is just an example,
-// so you can safely delete all default props below
+import { Translations } from "@aws-amplify/ui-components";
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful'
+  language: 'Language',
+  logout: 'Log Out',
+  welcome: "Welcome to the Photo App",
+  auth: {
+    ...Translations,
+  }
 }

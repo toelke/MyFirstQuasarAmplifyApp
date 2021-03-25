@@ -19,6 +19,10 @@ export default {
         this.$store.commit('auth/user', "");
       }
     });
+    if (localStorage.locale) this.$i18n.locale = localStorage.locale;
+    this.$watch("$i18n.locale", () => {
+      localStorage.locale = this.$i18n.locale;
+    });
   },
   beforeDestroy() {
     this.unsubscribeAuth();
