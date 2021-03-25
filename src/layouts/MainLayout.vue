@@ -15,7 +15,7 @@
           Photo App
         </q-toolbar-title>
         <div class="absolute-right" v-if="loggedIn">
-          {{ this.user }}
+          {{ user }}
           <q-btn @click="logout()" flat label="LogOut" class="right" />
         </div>
       </q-toolbar>
@@ -44,8 +44,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { auth_logout } from "src/services/cloud";
-import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 import "@aws-amplify/ui-vue";
 
 export default {
@@ -54,32 +54,12 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
-      loggedIn: false,
-      user: "",
       formFields: [{ type: "email" }, { type: "password" }],
     };
   },
-  created() {
-    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
-      if (authState == "signedin") {
-        this.loggedIn = true;
-        this.user = authData.username;
-      } else {
-        this.loggedIn = false;
-        this.user = "";
-      }
-    });
-  },
-  beforeDestroy() {
-    this.unsubscribeAuth();
-  },
+  computed: mapState("auth", ["loggedIn", "user"]),
   methods: {
-    async logout() {
-      const stat = await auth_logout();
-      if (stat.status == "ok") {
-        this.loggedIn = false;
-      }
-    },
+    logout: auth_logout,
   },
 };
 </script>
