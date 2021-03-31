@@ -2,19 +2,8 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>
-          Photo App
-        </q-toolbar-title>
-        <div class="absolute-right q-pa-sm row">
+        <q-btn flat to="/" label="Photo App"/>
+<q-space/>
           <div v-if="loggedIn">
             {{ user }}
             <q-btn @click="logout()" flat :label="$t('logout')" class="right" />
@@ -29,18 +18,9 @@
                 </q-item>
               </q-list>
             </q-btn-dropdown>
-          </div>
         </div>
       </q-toolbar>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-    </q-drawer>
 
     <q-page-container v-if="!loggedIn">
       <h3 style="text-align: center; padding-left: inherit;" class="absolute-top q-pa-md">
@@ -81,7 +61,6 @@ export default {
   components: {},
   data() {
     return {
-      leftDrawerOpen: false,
       formFields: [{ type: "email" }, { type: "password" }],
     };
   },
