@@ -2,6 +2,12 @@ export default {
   language: "Sprache",
   logout: "Abmelden",
   welcome: "Willkommen bei der Photo App",
+  albumname: "Album Name",
+  createnew: "Erstellen",
+  open: "Öffnen",
+  delete: "Löschen",
+  reallydelete: "Wirklich löschen?",
+  reallydeletealbum: '"{album}" wirklich löschen?',
   auth: {
     BACK_TO_SIGN_IN: "Zurück zum Login",
     CHANGE_PASSWORD_ACTION: "Ändern",
