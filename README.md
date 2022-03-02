@@ -2,6 +2,8 @@
 
 The Photo App of the Meetup
 
+See https://aws-blog.de/2021/03/building-a-serverless-webapp-with-amplify-and-quasar-day-1.html
+
 ## Install the dependencies
 ```bash
 npm install
